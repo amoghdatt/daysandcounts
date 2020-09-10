@@ -72,6 +72,15 @@ def test_empty_dictionary():
 
 
 def test_subsitute_for_occurence_of_zero():
+    """check that substitute function perform as expected"""
     d = {'2020-09-07':8,'2020-09-06':9}
     expected = {'Mon':8,'Tue':4,'Wed':2,'Thu':1,'Fri':0,'Sat':4,'Sun':9}
     assert run.get_weekdays_count(d) == expected
+
+def test_leap_year_true():
+    "check that leap year is true for 2020"
+    assert run.is_leap_year(2020) == True
+
+def test_leap_year_false():
+    "check that leap year is false for 1900"
+    assert run.is_leap_year(1900) == False 
