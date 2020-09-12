@@ -78,9 +78,25 @@ def test_subsitute_for_occurence_of_zero():
     assert run.get_weekdays_count(d) == expected
 
 def test_leap_year_true():
-    "check that leap year is true for 2020"
+    """check that leap year is true for 2020"""
     assert run.is_leap_year(2020) == True
 
 def test_leap_year_false():
-    "check that leap year is false for 1900"
-    assert run.is_leap_year(1900) == False 
+    """check that leap year is false for 1900"""
+    assert run.is_leap_year(1900) == False
+
+@pytest.mark.parametrize(
+    "d",
+    [
+        pytest.param(
+            {'2101-01-01':-1000001,'2020-01-04':12,'2020-01-05':14,'2020-01-06':2,'1969-01-07':4}
+        ),
+        pytest.param(
+            {'2101-01-01':1000001,'2020-01-04':12,'2020-01-05':14,'2020-01-06':2,'1969-01-07':4}
+        )
+    ]
+)
+def test_value_range_exception(d):
+    """check that exception is raised for out of range values"""
+    with pytest.raises(Exception):
+        assert run.get_weekdays_count(d)

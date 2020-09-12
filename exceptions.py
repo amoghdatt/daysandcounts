@@ -11,3 +11,6 @@ class MonthOutOfRangeError:
 
 class DayOutOfRangeError:
     pass
+
+class ValueOutOfRangeError:
+    pass

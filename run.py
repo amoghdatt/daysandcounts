@@ -44,8 +44,13 @@ def get_weekdays_count(date_dict):
     for k,v in date_dict.items():
         try:
             date_object = datetime.strptime(k,'%Y-%m-%d').date()
+
             if not (1970 <= date_object.year <= 2100):
                 raise e.YearOutOfRangeError("Year should be in the range 1970 - 2100")
+
+            if not (-1000000 <= v <= 1000000):
+                raise e.ValueOutOfRangeError("Values should be in range -1,000,000 - 1,000,000")
+
         except ValueError:
             return "date not supplied in YYYY-MM-DD format"
 
@@ -84,6 +89,7 @@ def substitute_for_occurence_of_zero(count_dictionary):
         count_dictionart(dictionary): modified dictionary to fill the occurence of zero 
 
     """
+    
     for k,v in count_dictionary.items():
         if v == 0:
             count_dictionary[k] = (count_dictionary[k-1]+count_dictionary[k+1])//2
