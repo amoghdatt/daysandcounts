@@ -4,19 +4,6 @@ import exceptions as e
 DAYS_OF_WEEK = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
 DAYS_IN_THE_MONTH = [-1,31,29,31,30,31,30,31,31,30,31,30,31]
 
-def is_leap_year(year):
-    """
-    Function to check if a given year is leap year or not
-
-    Parameters:
-        year(INTEGER)
-
-    Returns:
-        True(Boolean): if year is leap year
-        False(Boolean): if year is not leap year 
-    """
-    return year%4==0 and (year%100!=0 or year%400==0)
-
 
 def get_weekdays_count(date_dict):
     """
